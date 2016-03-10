@@ -1,0 +1,46 @@
+$colLength: ( 3  * 100% );
+$rowLength: ( 2 * 100% );
+
+// icons
+
+[class^="icon-"]:before {
+	content: '';
+	width: 1em;
+	height: 1em;
+	display: inline-block;
+	vertical-align:middle;
+	background-image: url( '../SVGSprite.svg' );
+	background-repeat: no-repeat;
+	background-size: $colLength $rowLength;
+	position: relative;
+	top: -0.1em;
+}
+
+.icon-chicken:before { background-position: 0em 0em; }
+.icon-cupcake:before { background-position: -1em 0em; }
+.icon-friedegg:before { background-position: 0em -1em; }
+.icon-humberger:before { background-position: -1em -1em; }
+.icon-pizza:before { background-position: -2em 0em; }
+
+// mixin
+
+$icons: (
+  chicken: (x:0, y:0),
+  cupcake: (x:-1, y:0),
+  friedegg: (x:0, y:-1),
+  humberger: (x:-1, y:-1),
+  pizza: (x:-2, y:0),
+);
+
+@mixin coloredIcon ( $iconName, $size: 16px ) {
+	$x: ( $size * map-get( map-get( $icons, $iconName ), 'x' ) );
+	$y: ( $size * map-get( map-get( $icons, $iconName ), 'y' ) );
+	content: '';
+	display: block;
+	width:$size;
+	height:$size;
+	background-image: url( '../SVGSprite.svg' );
+	background-repeat: no-repeat;
+	background-size: $colLength $rowLength;
+	background-position: $x $y;
+}

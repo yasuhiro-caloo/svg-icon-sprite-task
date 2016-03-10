@@ -1,0 +1,42 @@
+$colLength: ( {{width}}  * 100% );
+$rowLength: ( {{height}} * 100% );
+
+// icons
+
+[class^="icon-"]:before {
+	content: '';
+	width: 1em;
+	height: 1em;
+	display: inline-block;
+	vertical-align:middle;
+	background-image: url( '{{{cssPathSvg}}}' );
+	background-repeat: no-repeat;
+	background-size: $colLength $rowLength;
+	position: relative;
+	top: -0.1em;
+}
+
+{{#sprites}}
+.icon-{{fileName}}:before { background-position: {{x}}em {{y}}em; }
+{{/sprites}}
+
+// mixin
+
+$icons: (
+  {{#sprites}}
+  {{fileName}}: (x:{{x}}, y:{{y}}),
+  {{/sprites}}
+);
+
+@mixin coloredIcon ( $iconName, $size: 16px ) {
+	$x: ( $size * map-get( map-get( $icons, $iconName ), 'x' ) );
+	$y: ( $size * map-get( map-get( $icons, $iconName ), 'y' ) );
+	content: '';
+	display: block;
+	width:$size;
+	height:$size;
+	background-image: url( '{{{cssPathSvg}}}' );
+	background-repeat: no-repeat;
+	background-size: $colLength $rowLength;
+	background-position: $x $y;
+}
