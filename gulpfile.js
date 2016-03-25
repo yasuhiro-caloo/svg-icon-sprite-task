@@ -12,7 +12,7 @@ gulp.task( 'svgSprite', function () {
   return gulp.src( [ './src/SVGSprite/*.svg' ] )
   .pipe( svgSpriteSheet( {
     cssPathSvg: '../SVGSprite.svg',
-    padding: 0,
+    padding: 10,
     pixelBase: SVGSize,
     positioning: 'packed',
     templateSrc: './src/SVGSprite/_template.scss',

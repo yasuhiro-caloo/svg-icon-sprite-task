@@ -1,42 +1,44 @@
-$colLength: ( {{width}}  * 100% );
-$rowLength: ( {{height}} * 100% );
-
 // icons
 
 [class^="icon-"]:before {
 	content: '';
-	width: 1em;
-	height: 1em;
 	display: inline-block;
 	vertical-align:middle;
 	background-image: url( '{{{cssPathSvg}}}' );
 	background-repeat: no-repeat;
-	background-size: $colLength $rowLength;
 	position: relative;
 	top: -0.1em;
 }
 
 {{#sprites}}
-.icon-{{fileName}}:before { background-position: {{x}}em {{y}}em; }
+.icon-{{fileName}}:before {
+	width:{{w}}em ;
+	height:{{h}}em ;
+	background-position: {{x}}em {{y}}em;
+	background-size: ( {{width}} / {{w}} * 100% ) ( {{height}} / {{h}} * 100% );
+}
 {{/sprites}}
 
 // mixin
 
 $icons: (
   {{#sprites}}
-  {{fileName}}: (x:{{x}}, y:{{y}}),
+  {{fileName}}: (x:{{x}}, y:{{y}}, w: {{w}}, h:{{h}}),
   {{/sprites}}
 );
 
-@mixin coloredIcon ( $iconName, $size: 16px ) {
-	$x: ( $size * map-get( map-get( $icons, $iconName ), 'x' ) );
-	$y: ( $size * map-get( map-get( $icons, $iconName ), 'y' ) );
+@mixin coloredIcon ( $iconName, $height: 16px ) {
+	$x: ( map-get( map-get( $icons, $iconName ), 'x' ) );
+	$y: ( map-get( map-get( $icons, $iconName ), 'y' ) );
+	$w: ( map-get( map-get( $icons, $iconName ), 'w' ) );
+	$h: ( map-get( map-get( $icons, $iconName ), 'h' ) );
+
 	content: '';
 	display: block;
-	width:$size;
-	height:$size;
+	width: $height * $w;
+	height: $height * $h;
 	background-image: url( '{{{cssPathSvg}}}' );
 	background-repeat: no-repeat;
-	background-size: $colLength $rowLength;
-	background-position: $x $y;
+	background-position: $height * $x $height * $y;
+	background-size: ( {{width}} / $w * 100% ) ( {{height}} / $h * 100% );
 }
