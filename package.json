@@ -8,10 +8,13 @@
   },
   "author": "",
   "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-sass": "^2.2.0",
-    "gulp-svg-spritesheet": "0.0.4",
-    "run-sequence": "^1.1.5"
-  }
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0",
+    "gulp-svg-spritesheet": "github:yasuhiro-caloo/gulp-svg-spritesheet"
+  },
+  "dependencies": {}
 }

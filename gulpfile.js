@@ -1,6 +1,5 @@
 'use strict';
 
-var runSequence    = require( 'run-sequence' );
 var gulp           = require( 'gulp' );
 var sass           = require( 'gulp-sass' );
 var svgSpriteSheet = require( 'gulp-svg-spritesheet' );
@@ -32,9 +31,4 @@ gulp.task( 'sass', function () {
 
 } );
 
-
-gulp.task( 'build', function () {
-
-  runSequence( 'svgSprite', 'sass' );
-
-} );
+gulp.task('build', gulp.series('svgSprite', 'sass'));
