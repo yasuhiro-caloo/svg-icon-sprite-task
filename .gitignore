@@ -5,3 +5,4 @@ Thumbs.db
 .sass-cache
 npm-debug.log
 build
+_SVGSprite.scss
