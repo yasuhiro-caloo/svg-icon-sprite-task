@@ -1,6 +1,6 @@
 {
-  "name": "icon",
-  "version": "1.0.0",
+  "name": "svg-icon-sprite-task",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
