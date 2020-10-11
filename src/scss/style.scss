@@ -1,18 +1,1 @@
 @import 'SVGSprite';
-
-.navItem{
-	font-size: 20px;
-	position: relative;
-	width: 300px;
-	padding: 10px;
-	border: 1px solid #221111;
-	background: #996600;
-}
-
-.navItem:after{
-	@include coloredIcon( 'humberger', 40px );
-	position: absolute;
-	top: 50%;
-	margin-top: -20px;
-	right: 10px;
-}
