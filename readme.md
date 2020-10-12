@@ -1,4 +1,4 @@
-##### How to use
+##### Usage
 
 1. `npm install`
 2. Put your `.svg` files in `./src/SVGSprite`
